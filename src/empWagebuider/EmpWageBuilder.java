@@ -5,6 +5,7 @@ public class EmpWageBuilder {
 	public static void main(String ards[])
 	{
 		System.out.println("Welcome to EmployeeWage Computation");
+		int workingDaysMonth=20;
 		int income=0;
 		int Is_Full_Time=1;
 		int Is_Part_Part=0;
@@ -17,11 +18,11 @@ public class EmpWageBuilder {
 		switch(n)
 		{
 		case 1:
-			income=EmpRate_PerHr*FullDay_Hr;
+			income=EmpRate_PerHr*FullDay_Hr*workingDaysMonth;
 			System.out.println("Employee Is Present And Full Day Earning Is ="+income);
 			break;
 		case 2:
-			 income=EmpRate_PerHr*PartTime_Hr;
+			 income=EmpRate_PerHr*PartTime_Hr*workingDaysMonth;
 			System.out.println("Employee Is Present And Part Time Day Earning Is ="+income);
 			break;
 		default:
@@ -29,7 +30,5 @@ public class EmpWageBuilder {
 			break;
 			
 		}
-			
-
 }
 }
