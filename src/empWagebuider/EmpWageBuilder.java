@@ -5,6 +5,18 @@ public class EmpWageBuilder {
 	public static void main(String ards[])
 	{
 		System.out.println("Welcome to EmployeeWage Computation");
+	
+	//empWageCalculation Method call
+		empWageCalculation();
+	
+	}
+	
+	
+	
+	//method Implementation
+	
+		public static void empWageCalculation()
+		{
 		int fullTimeDays=0;
 		int partTimedays=0;
 		int workingDayMonth=20;
