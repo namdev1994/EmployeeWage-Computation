@@ -2,65 +2,60 @@ package empWagebuider;
 import java.util.*;
 
 public class EmpWageBuilder {
+	//constants
+	public static final int Is_Full_Time=1;
+	public static final int Is_Part_Part=0;
+	private final String company;
+	private final int empRatePerHr;
+	private final int workingDayInMonth;
+	private final int maxHoursInMonth;
+	
+	//constructor
+	public EmpWageBuilder(String company, int empRatePerHr, int workingDayInMonth, int maxHoursInMonth) {
+		this.company = company;
+		this.empRatePerHr = empRatePerHr;
+		this.workingDayInMonth = workingDayInMonth;
+		this.maxHoursInMonth = maxHoursInMonth;
+		
+	}
+	public int empWageCalculation()
+	{
+		int empHrs=0,totalEmpHrs=0,totalWorkingDay=0;
+	
+	while(maxHoursInMonth > totalEmpHrs && workingDayInMonth > totalWorkingDay)
+	{
+		totalWorkingDay++;
+		Random rand=new Random();
+		int check=rand.nextInt(3);
+		System.out.println("random number"+check);
+		switch(check)
+		{
+		case Is_Full_Time:
+			 empHrs=8;
+			 break;
+		case  Is_Part_Part:
+			 empHrs=4;
+			 break;
+		default:
+			 empHrs=0;
+			 break;
+			
+		}
+		totalEmpHrs +=empHrs;
+		System.out.println("Working Days : "+totalWorkingDay+" empHours = "+empHrs);
+		System.out.println("Total employee work Hours : "+totalEmpHrs);	
+	}
+	return totalEmpHrs*empRatePerHr;
+	}
+
 	public static void main(String ards[])
 	{
 		System.out.println("Welcome to EmployeeWage Computation");
-	
-	//empWageCalculation Method call
-		empWageCalculation();
-	
-	}
-	
-	
-	
-	//method Implementation
-	
-		public static void empWageCalculation()
-		{
-		int fullTimeDays=0;
-		int partTimedays=0;
-		int workingDayMonth=20;
-		int maxHoursInMonth=100;
-		int totalempHour=0;
-		int totalWorkingDay=0;
-		int absent=0;
-		int income=0;
-		int Is_Full_Time=1;
-		int Is_Part_Part=0;
-		int EmpRate_PerHr=20;
-		int FullDay_Hr=8;
-		int PartTime_Hr=4;
-		while(maxHoursInMonth > totalempHour && workingDayMonth > totalWorkingDay)
-		{
-			totalWorkingDay++;
-			Random rand=new Random();
-			int n=rand.nextInt(3);
-			switch(n)
-			{
-			case 1:
-				fullTimeDays++;
-				totalempHour=totalempHour+FullDay_Hr;
-				break;
-			case 2:
-				partTimedays++;
-				totalempHour=totalempHour+PartTime_Hr;
-				break;
-			default:
-				absent++;
-				break;
-				
-			}
-		}
-		int fullTimeIncome=EmpRate_PerHr*(FullDay_Hr*fullTimeDays);
-		int partTimeIncome=EmpRate_PerHr*(PartTime_Hr*partTimedays);
-		System.out.println("-----------------------------------------");
-		System.out.println("FullTime Days in Month ="+fullTimeDays);
-		System.out.println("PartTime Days in Month ="+partTimedays);
-		System.out.println("Absent days in month ="+absent);
-		System.out.println("Total Working Days in Month ="+(fullTimeDays+partTimedays));
-		System.out.println("Total Hours ="+totalempHour);
-		System.out.println("FullTime Income ="+fullTimeIncome);
-		System.out.println("PartTime Income ="+partTimeIncome);
+		//boject creation of Class
+		EmpWageBuilder dmart=new EmpWageBuilder("Dmart",20,2,10);
+		System.out.println("EmpWage for "+dmart.company+" is : "+dmart.empWageCalculation());
+		EmpWageBuilder reliance =new EmpWageBuilder("Reliance",20,2,10);
+		System.out.println("EmpWage for "+reliance.company+" is : "+reliance.empWageCalculation());
 	
 		
 }
