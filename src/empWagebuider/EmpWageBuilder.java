@@ -6,22 +6,23 @@ public class EmpWageBuilder implements EmpWageInterface{
 	public static final int Is_Full_Time=1;
 	public static final int Is_Part_Part=0;
 	private int numOfCompany=0;
-	private CompanyEmpWage[] companyEmpWageArray;
+	public ArrayList<CompanyEmpWage>companyWageList;
 	public EmpWageBuilder()
 	{
-		companyEmpWageArray=new CompanyEmpWage[5];
+		companyWageList=new ArrayList<>();
 	}
 	public void addCompanyEmpWage(String company, int empRatePerHr, int workingDayInMonth, int maxHoursInMonth)
 	{
-		companyEmpWageArray[numOfCompany]=new CompanyEmpWage(company,empRatePerHr,workingDayInMonth,maxHoursInMonth);
-		numOfCompany++;
+	 CompanyEmpWage companyEmpWage=new CompanyEmpWage(company,empRatePerHr,workingDayInMonth,maxHoursInMonth);
+		companyWageList.add(companyEmpWage);
 	}
 	public void computeWage()
 	{
-		for(int i=0;i< numOfCompany;i++)
+		for(int i=0;i< companyWageList.size();i++)
 		{
-			companyEmpWageArray[i].setTotalEmpWage(this.empWageCalculation(companyEmpWageArray[i]));
-			System.out.println(companyEmpWageArray[i]);
+			CompanyEmpWage companyEmpWage=companyWageList.get(i);
+			companyEmpWage.setTotalEmpWage(this.empWageCalculation(companyEmpWage));
+			System.out.println(companyEmpWage);
 		}
 	}
 	public int empWageCalculation(CompanyEmpWage companyEmpWage)
