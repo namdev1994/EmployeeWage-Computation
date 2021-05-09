@@ -51,7 +51,8 @@ public class EmpWageBuilder implements EmpWageInterface{
 		}
 		totalEmpHrs +=empHrs;
 		System.out.println("Working Days : "+totalWorkingDay+" empHours = "+empHrs);
-		System.out.println("Total employee work Hours : "+totalEmpHrs);	
+		System.out.println("Total employee work Hours : "+totalEmpHrs);
+		System.out.println("for Day "+totalWorkingDay+" Daily Emp Wage  is : "+empHrs*companyEmpWage.empRatePerHr);	
 	}
 	return totalEmpHrs*companyEmpWage.empRatePerHr;
 	}
