@@ -27,7 +27,7 @@ public class EmpWageBuilder {
 		totalWorkingDay++;
 		Random rand=new Random();
 		int check=rand.nextInt(3);
-		System.out.println("random number"+check);
+		System.out.println("random number :"+check);
 		switch(check)
 		{
 		case Is_Full_Time:
