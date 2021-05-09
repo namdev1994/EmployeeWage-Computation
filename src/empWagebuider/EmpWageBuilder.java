@@ -1,7 +1,7 @@
 package empWagebuider;
 import java.util.*;
 
-public class EmpWageBuilder {
+public class EmpWageBuilder implements EmpWageInterface{
 	//constants
 	public static final int Is_Full_Time=1;
 	public static final int Is_Part_Part=0;
@@ -11,12 +11,12 @@ public class EmpWageBuilder {
 	{
 		companyEmpWageArray=new CompanyEmpWage[5];
 	}
-	private void addCompanyEmpWage(String company, int empRatePerHr, int workingDayInMonth, int maxHoursInMonth)
+	public void addCompanyEmpWage(String company, int empRatePerHr, int workingDayInMonth, int maxHoursInMonth)
 	{
 		companyEmpWageArray[numOfCompany]=new CompanyEmpWage(company,empRatePerHr,workingDayInMonth,maxHoursInMonth);
 		numOfCompany++;
 	}
-	private void computeWage()
+	public void computeWage()
 	{
 		for(int i=0;i< numOfCompany;i++)
 		{
@@ -41,6 +41,7 @@ public class EmpWageBuilder {
 			 break;
 		case  Is_Part_Part:
 			 empHrs=4;
+			 
 			 break;
 		default:
 			 empHrs=0;
