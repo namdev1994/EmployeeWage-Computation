@@ -7,14 +7,17 @@ public class EmpWageBuilder implements EmpWageInterface{
 	public static final int Is_Part_Part=0;
 	private int numOfCompany=0;
 	public ArrayList<CompanyEmpWage>companyWageList;
+	public Map<String,CompanyEmpWage>companyToEmpWageMap;
 	public EmpWageBuilder()
 	{
 		companyWageList=new ArrayList<>();
+		companyToEmpWageMap=new HashMap<>();
 	}
 	public void addCompanyEmpWage(String company, int empRatePerHr, int workingDayInMonth, int maxHoursInMonth)
 	{
 	 CompanyEmpWage companyEmpWage=new CompanyEmpWage(company,empRatePerHr,workingDayInMonth,maxHoursInMonth);
 		companyWageList.add(companyEmpWage);
+		companyToEmpWageMap.put(company, companyEmpWage);
 	}
 	public void computeWage()
 	{
@@ -56,6 +59,10 @@ public class EmpWageBuilder implements EmpWageInterface{
 	}
 	return totalEmpHrs*companyEmpWage.empRatePerHr;
 	}
+	public int getTotalWage(String company)
+	{
+		return companyToEmpWageMap.get(company).totalEmpWage;
+	}
 
 	public static void main(String ards[])
 	{
@@ -63,6 +70,7 @@ public class EmpWageBuilder implements EmpWageInterface{
 		EmpWageBuilder empWageBuilder=new EmpWageBuilder();
 		empWageBuilder.addCompanyEmpWage("Dmart",20,2,10);
 		empWageBuilder.addCompanyEmpWage("Reliance",20,3,20);
-		empWageBuilder.computeWage();
+		//empWageBuilder.computeWage();
+		System.out.println("Total Wage for Dmart Company: "+empWageBuilder.getTotalWage("Dmart"));
 }
 }
